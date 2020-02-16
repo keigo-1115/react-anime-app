@@ -1,6 +1,8 @@
 import React from 'react';
 import ApolloClient from "apollo-boost";
 import gql from "graphql-tag";
+import firebase from 'firebase';
+import "firebase/storage";
 
 export default class Main extends React.Component {
 
@@ -40,18 +42,33 @@ const client = new ApolloClient({
 //トークンで認証
 
 let response = await client.query({
-                query
-            })
-            if(response !== null){
-                console.log(response);
-            }
-        })().catch(
-            error=>{
-              console.log(error);
-            }
-        )
-    }
+  query
+})
+if(response !== null){
+  console.log(response);
+}
+})().catch(
+error=>{
+console.log(error);
+}
+)
 //問題なくデータを取得できた場合は値をコンソールに反映
+
+// const url = "";//アニメサイトurl
+
+// fetch(url).then(res => res.text()).then(text => {
+//     const el = new DOMParser().parseFromString(text, "text/html")
+//     const headEls = (el.head.children)
+//     Array.from(headEls).map(v => {
+//         const prop = v.getAttribute('property')
+//         if (!prop) return;
+//         console.log(prop, v.getAttribute("content"))
+//     })
+// })
+}
+//ogpデータから画像urlを取得
+
+
 
   render() {
     return (
@@ -59,7 +76,7 @@ let response = await client.query({
             <input
           type="button"
           value="アニメデータを検索"
-          onClick={() => this.fetchWatchedTitles()}
+          onClick={() => this._onPressOk()}
         />
         </div> 
     );
