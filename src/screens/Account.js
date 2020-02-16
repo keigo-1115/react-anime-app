@@ -1,6 +1,8 @@
 import React from 'react';
 import firebase from 'firebase';
 import "firebase/storage";
+import TextField from "../components/TextField";
+import Button from "../components/ButtonComponent";
 
 export default class Account extends React.Component {
 
@@ -25,13 +27,17 @@ export default class Account extends React.Component {
 
   render() {
     return (
-        <div className="App">
+        <div className="Account">
+          <img src="logo512.png" width="44px" height="44px" alt="logo"/>
+            <TextField/>
+            <Button/>
+{/* 
             <input
           type="button"
           value="firebaseと接続"
           onClick={() => this._onPressOk()}
-        />
-        </div> 
+        /> */}
+        </div>
     );
   }
 }

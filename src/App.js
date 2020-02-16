@@ -2,9 +2,12 @@ import React from 'react';
 import './App.css';
 import {createStore,compose,applyMiddleware} from 'redux';
 import {Provider} from 'react-redux';
-import reducer from './Reducer';
+import reducer from './redux/Reducer';
 import firebase from 'firebase';
-import Account from './Account';
+import Account from './screens/Account';
+import {MuiThemeProvider} from '@material-ui/core/styles';
+import {theme} from './components/ThemeChange';
+
 
 export default class App extends React.Component {
 
@@ -23,9 +26,11 @@ export default class App extends React.Component {
     const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
     const store = createStore(reducer,composeEnhancers(applyMiddleware()));
     return (
+    <MuiThemeProvider theme={theme}>
       <Provider store={store}>
           <Account/>
       </Provider> 
+    </MuiThemeProvider>
     );
   }
 }
