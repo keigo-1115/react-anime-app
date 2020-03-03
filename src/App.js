@@ -4,31 +4,31 @@ import {createStore,compose,applyMiddleware} from 'redux';
 import {Provider} from 'react-redux';
 import reducer from './redux/Reducer';
 import firebase from 'firebase';
-import Account from './screens/Account';
 import {MuiThemeProvider} from '@material-ui/core/styles';
 import {theme} from './components/ThemeChange';
-
+import Main from './screens/Main';
+import Thunk from 'redux-thunk';
 
 export default class App extends React.Component {
 
   componentWillMount() {
     firebase.initializeApp({
-      apiKey: "AIzaSyBC42HNxCZe7JjmXSWOvl8Hpx1YqrOnI3Y",
-      authDomain: "anime-app-6e5dd.firebaseapp.com",
-      databaseURL: "https://anime-app-6e5dd.firebaseio.com",
-      projectId: "anime-app-6e5dd",
-      storageBucket: "anime-app-6e5dd.appspot.com",
-      messagingSenderId: "144372671321"
+      apiKey: "",
+      authDomain: "",
+      databaseURL: "",
+      projectId: "",
+      storageBucket: "",
+      messagingSenderId: ""
     });
 }
 
   render() {
     const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-    const store = createStore(reducer,composeEnhancers(applyMiddleware()));
+    const store = createStore(reducer,composeEnhancers(applyMiddleware(Thunk)));
     return (
     <MuiThemeProvider theme={theme}>
       <Provider store={store}>
-          <Account/>
+          <Main/>
       </Provider> 
     </MuiThemeProvider>
     );

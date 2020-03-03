@@ -9,16 +9,16 @@ export default class Navbar extends Component {
         <div className="App_navbar">
            <nav> 
                <ul>
-                   <li className="App_navbar_item1 App-logo"><img src="logo512.png" width="44px" height="44px" alt="logo"/></li>
+                   <li className="App_navbar_item1"><img src="logo_transparent.png" width="200px" height="auto" alt="logo"/></li>
                    <li className="App_navbar_item2">
-                    <Icon path={mdiAccount}
+                    {/* <Icon path={mdiAccount}
                     title="User Account"
                     size={2}
                     horizontal
-                    vertical
+                    vertical  
                     rotate={180}
-                    color="red"
-                    />
+                    color="#FF5917"
+                    /> */}
                    </li>
                </ul>
            </nav>
